@@ -27,8 +27,10 @@ import com.linecorp.bot.model.Multicast;
 import com.linecorp.bot.model.Narrowcast;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
+import com.linecorp.bot.model.ValidateMessage;
 import com.linecorp.bot.model.group.GroupMemberCountResponse;
 import com.linecorp.bot.model.group.GroupSummaryResponse;
+import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.profile.MembersIdsResponse;
 import com.linecorp.bot.model.profile.UserProfileResponse;
 import com.linecorp.bot.model.request.GetFollowersRequest;
@@ -367,6 +369,18 @@ public class LineMessagingClientImpl implements LineMessagingClient {
     public CompletableFuture<GetAggregationUnitNameListResponse> getAggregationUnitNameList(
             String limit, String start) {
         return toFuture(retrofitImpl.getAggregationUnitNameList(limit, start));
+    }
+
+    @Override
+    public CompletableFuture<BotApiResponse> validateReplyMessageObject(List<Message> messages) {
+        return LineMessagingClientImpl.toBotApiFuture(
+            retrofitImpl.validateReplyMessageObject(new ValidateMessage(messages)));
+    }
+
+    @Override
+    public CompletableFuture<BotApiResponse> validatePushMessageObject(List<Message> messages) {
+        return LineMessagingClientImpl.toBotApiFuture(
+            retrofitImpl.validatePushMessageObject(new ValidateMessage(messages)));
     }
 
     // TODO: Extract this method.

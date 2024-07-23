@@ -23,6 +23,7 @@ import com.linecorp.bot.model.Multicast;
 import com.linecorp.bot.model.Narrowcast;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
+import com.linecorp.bot.model.ValidateMessage;
 import com.linecorp.bot.model.group.GroupMemberCountResponse;
 import com.linecorp.bot.model.group.GroupSummaryResponse;
 import com.linecorp.bot.model.profile.MembersIdsResponse;
@@ -183,6 +184,22 @@ interface LineMessagingService {
      */
     @GET("v2/bot/message/delivery/broadcast")
     Call<NumberOfMessagesResponse> getNumberOfSentBroadcastMessages(@Query("date") String date);
+
+    /**
+     * Method for Retrofit.
+     *
+     * @see LineMessagingClient#validateReplyMessageObject(ValidateMessage)
+     */
+    @POST("v2/bot/message/validate/reply")
+    Call<Void> validateReplyMessageObject(@Body ValidateMessage messages);
+
+    /**
+     * Method for Retrofit.
+     *
+     * @see LineMessagingClient#validatePushMessageObject(ValidateMessage)
+     */
+    @POST("v2/bot/message/validate/push")
+    Call<Void> validatePushMessageObject(@Body ValidateMessage messages);
 
     /**
      * Method for Retrofit.

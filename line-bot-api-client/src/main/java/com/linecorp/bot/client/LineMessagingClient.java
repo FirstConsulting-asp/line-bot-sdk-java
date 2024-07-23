@@ -28,6 +28,7 @@ import com.linecorp.bot.model.event.source.GroupSource;
 import com.linecorp.bot.model.event.source.RoomSource;
 import com.linecorp.bot.model.group.GroupMemberCountResponse;
 import com.linecorp.bot.model.group.GroupSummaryResponse;
+import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.profile.MembersIdsResponse;
 import com.linecorp.bot.model.profile.UserProfileResponse;
 import com.linecorp.bot.model.request.GetFollowersRequest;
@@ -488,6 +489,20 @@ public interface LineMessagingClient {
      */
     CompletableFuture<GetAggregationUnitNameListResponse> getAggregationUnitNameList(String limit,
                                                                                      String start);
+
+    /**
+     * Validate a reply message object.
+     *
+     * @see <a href="https://developers.line.biz/ja/reference/messaging-api/#validate-message-objects-of-reply-message">//developers.line.me/en/docs/messaging-api/reference/#validate-message-objects-of-reply-message</a>
+     */
+    CompletableFuture<BotApiResponse> validateReplyMessageObject(List<Message> messages);
+
+    /**
+     * Validate a push message object.
+     *
+     * @see <a href="https://developers.line.biz/ja/reference/messaging-api/#validate-message-objects-of-push-message">//developers.line.me/en/docs/messaging-api/reference/#validate-message-objects-of-push-message</a>
+     */
+    CompletableFuture<BotApiResponse> validatePushMessageObject(List<Message> messages);
 
     static LineMessagingClientBuilder builder(String channelToken) {
         return builder(FixedChannelTokenSupplier.of(channelToken));

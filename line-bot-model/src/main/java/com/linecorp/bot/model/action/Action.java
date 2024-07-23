@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 @JsonSubTypes({
         @JsonSubTypes.Type(CameraAction.class),
         @JsonSubTypes.Type(CameraRollAction.class),
+        @JsonSubTypes.Type(ClipboardAction.class),
         @JsonSubTypes.Type(DatetimePickerAction.class),
         @JsonSubTypes.Type(LocationAction.class),
         @JsonSubTypes.Type(MessageAction.class),

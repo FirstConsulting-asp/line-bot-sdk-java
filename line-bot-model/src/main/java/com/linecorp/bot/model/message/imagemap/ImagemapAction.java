@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
         property = "type"
 )
 @JsonSubTypes({
+        @JsonSubTypes.Type(ClipboardImagemapAction.class),
         @JsonSubTypes.Type(MessageImagemapAction.class),
         @JsonSubTypes.Type(URIImagemapAction.class),
 })
