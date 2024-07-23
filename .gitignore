@@ -29,7 +29,7 @@ hs_err_pid*
 *.pydevproject
 .project
 .metadata
-/bin/**
+/*/bin/**
 /tmp/**
 /tmp/**/*
 *.tmp
@@ -38,7 +38,7 @@ hs_err_pid*
 *~.nib
 local.properties
 .classpath
-.settings/**
+.settings
 .loadpath
 /src/main/resources/rebel.xml
 
